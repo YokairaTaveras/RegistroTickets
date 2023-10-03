@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
+using RegistroTickets.BLL;
 using RegistroTickets.DAL;
 using RegistroTickets.Data;
 
@@ -12,6 +13,7 @@ builder.Services.AddServerSideBlazor();
 var ConStr = builder.Configuration.GetConnectionString("ConStr");
 
 builder.Services.AddDbContext<TicketsContext>(Options => Options.UseSqlite(ConStr));
+builder.Services.AddScoped<TicketsBLL>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
