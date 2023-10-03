@@ -1,9 +1,18 @@
 ﻿@page "/"
+@inject NotificationService notificationService
 
 <PageTitle>Index</PageTitle>
+@code {
+    public void MostrarNotificacion()
+    {
+        var mensaje = new NotificationMessage
+            {
+                Severity = NotificationSeverity.Error,
+                Summary = "Notificacion ejemplo",
+                Detail = "Esta es una prueba de Notificacion service",
+                Duration = 4_000
+            };
+        notificationService.Notify(mensaje);
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+    }
+}
